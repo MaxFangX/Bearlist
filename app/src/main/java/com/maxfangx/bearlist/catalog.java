@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class catalog extends Activity {
 
-    TextView catalogname;
+    //TextView catalogname;
     TextView catalogemail;
     TextView catalogpass;
 
@@ -18,16 +18,16 @@ public class catalog extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
-        catalogname = (TextView)findViewById(R.id.catalogname);
+        //catalogname = (TextView)findViewById(R.id.catalogname);
         catalogemail = (TextView)findViewById(R.id.catalogemail);
         catalogpass = (TextView)findViewById(R.id.catalogpassword);
 
         Intent i = getIntent();
-        String name = i.getStringExtra("name");
+        //String name = i.getStringExtra("name");
         String email = i.getStringExtra("email");
         String pass = i.getStringExtra("pass");
 
-        catalogname.setText(name);
+        //catalogname.setText(name);
         catalogemail.setText(email);
         catalogpass.setText(pass);
     }
