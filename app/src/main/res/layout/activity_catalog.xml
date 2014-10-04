@@ -42,4 +42,13 @@
         android:layout_below="@+id/catalogemail"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make Post"
+        android:id="@+id/postbutton"
+        android:layout_alignBottom="@+id/catalogemail"
+        android:layout_toRightOf="@+id/catalogpassword"
+        android:layout_toEndOf="@+id/catalogpassword" />
+
 </RelativeLayout>
