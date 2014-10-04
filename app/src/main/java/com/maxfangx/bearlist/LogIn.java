@@ -75,9 +75,15 @@ public class LogIn extends Activity implements View.OnClickListener {
 
                     }
                 });
+                Intent catalog = new Intent(getApplicationContext(), catalog.class);
+                catalog.putExtra("email", email.getText().toString());
+                catalog.putExtra("pass", password.getText().toString());
+                startActivity(catalog);
+            break;
             case R.id.signup:
                 Intent sign = new Intent(getApplicationContext(), SignUp.class);
                 startActivity(sign);
+            break;
         }
     }
 }
