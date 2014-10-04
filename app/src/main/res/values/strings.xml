@@ -2,7 +2,13 @@
 <resources>
 
     <string name="app_name">BearList</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="welcome">Welcome to BearList!</string>
     <string name="action_settings">Settings</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="pass">Password</string>
+    <string name="title_activity_catalog">catalog</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
