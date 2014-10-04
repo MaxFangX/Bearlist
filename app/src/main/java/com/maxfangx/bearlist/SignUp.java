@@ -58,8 +58,7 @@ public class SignUp extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (password.equals(passwordagain)) {
-
+        if (password.getText().toString().equals(passwordagain.getText().toString())) {
             ParseUser user = new ParseUser();
             user.setUsername(name.getText().toString());
             user.setPassword(password.getText().toString());

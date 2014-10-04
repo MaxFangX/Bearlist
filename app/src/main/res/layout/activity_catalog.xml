@@ -24,21 +24,39 @@
         <!--android:layout_alignRight="@+id/catalogemail"-->
         <!--android:layout_alignEnd="@+id/catalogemail" />-->
 
-    <ListView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/postlist"
-        android:layout_below="@+id/postbutton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:text="Email"
+        android:id="@+id/catalogemail"
+        android:layout_below="@+id/catalogname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:id="@+id/catalogpassword"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/catalogemail"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Make Post"
         android:id="@+id/postbutton"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignBottom="@+id/catalogemail"
+        android:layout_toRightOf="@+id/catalogpassword"
+        android:layout_toEndOf="@+id/catalogpassword" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_below="@+id/catalogpassword"
+        android:layout_alignRight="@+id/catalogpassword"
+        android:layout_alignEnd="@+id/catalogpassword" />
 
 </RelativeLayout>

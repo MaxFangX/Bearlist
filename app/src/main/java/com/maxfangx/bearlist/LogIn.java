@@ -27,6 +27,7 @@ public class LogIn extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Parse.initialize(this, "5mjHRFGROrSdvWPcmoQTh5bQtclikW02ZESfPfgh", "AtfQuYeDHeWnfUQNnmCbB8IBCC5FtlD8NoROVIe0");
+        //Parse.initialize(this,"0DjH3hlL03Nf8neV0qBuG8LfgzrGx6xZBOSN8zwi", "QkfdyELcub7wzIBHkzxCv6tKrUFAjmx5Rl63iZiP");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         loginButton = (Button)findViewById(R.id.button);
