@@ -1,6 +1,7 @@
 package com.maxfangx.bearlist;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,8 +10,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import org.w3c.dom.Text;
+
+import static com.parse.ParseUser.getCurrentUser;
 
 
 public class PostPage extends Activity implements View.OnClickListener {
@@ -51,9 +55,13 @@ public class PostPage extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        ParseObject post = new ParseObject("Post");
+        ParseObject post = new ParseObject("post");
         post.put("title", title.getText().toString());
         post.put("description", description.getText().toString());
+        post.put("author", getCurrentUser().getEmail().toString());
         post.saveInBackground();
+
+        Intent catalog = new Intent(getApplicationContext(), catalog.class);
+        startActivity(catalog);
     }
 }
