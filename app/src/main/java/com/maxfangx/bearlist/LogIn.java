@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.Parse;
@@ -36,6 +37,15 @@ public class LogIn extends Activity implements View.OnClickListener {
         newuser.setOnClickListener(this);
         email = (EditText)findViewById(R.id.email);
         password = (EditText)findViewById(R.id.pass);
+
+//        ParseUser currentUser = ParseUser.getCurrentUser();
+//        if (currentUser != null) {
+//            Intent catalog = new Intent(getApplicationContext(), catalog.class);
+//            //catalog.putExtra("name", name.getText().toString());
+//            catalog.putExtra("email", email.getText().toString());
+//            catalog.putExtra("pass", password.getText().toString());
+//            startActivity(catalog);
+//        }
     }
 
 
@@ -66,8 +76,14 @@ public class LogIn extends Activity implements View.OnClickListener {
                     public void done(ParseUser user, ParseException e) {
                         if (user != null) {
                             // Hooray! The user is logged in.
-                        } else {
+                            Intent catalog = new Intent(getApplicationContext(), catalog.class);
+                            catalog.putExtra("email", email.getText().toString());
+                            catalog.putExtra("pass", password.getText().toString());
+                            startActivity(catalog);
+                        }
+                        else {
                             // Signup failed. Look at the ParseException to see what happened.
+                            System.out.println("ERROR:"+e);
                         }
                     }
 
@@ -76,10 +92,6 @@ public class LogIn extends Activity implements View.OnClickListener {
 
                     }
                 });
-                Intent catalog = new Intent(getApplicationContext(), catalog.class);
-                catalog.putExtra("email", email.getText().toString());
-                catalog.putExtra("pass", password.getText().toString());
-                startActivity(catalog);
             break;
             case R.id.signup:
                 Intent sign = new Intent(getApplicationContext(), SignUp.class);

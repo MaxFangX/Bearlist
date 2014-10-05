@@ -71,7 +71,13 @@ public class SignUp extends Activity implements View.OnClickListener {
                 public void done(ParseException e) {
                     if (e == null) {
                         // Hooray! Let them use the app now.
+                        Intent catalog = new Intent(getApplicationContext(), catalog.class);
+                        catalog.putExtra("name", name.getText().toString());
+                        catalog.putExtra("email", email.getText().toString());
+                        catalog.putExtra("pass", password.getText().toString());
+                        startActivity(catalog);
                     } else {
+                        System.out.println("ERROR IS"+e);
                         // Sign up didn't succeed. Look at the ParseException
                         // to figure out what went wrong
                     }
@@ -82,11 +88,6 @@ public class SignUp extends Activity implements View.OnClickListener {
 
                 }
             });
-            Intent catalog = new Intent(getApplicationContext(), catalog.class);
-            catalog.putExtra("name", name.getText().toString());
-            catalog.putExtra("email", email.getText().toString());
-            catalog.putExtra("pass", password.getText().toString());
-            startActivity(catalog);
         }
         else    {
             Toast.makeText(this, "Sorry, your password doesn't match.", Toast.LENGTH_SHORT).show();

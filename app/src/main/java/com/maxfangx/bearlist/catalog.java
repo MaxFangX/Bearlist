@@ -71,7 +71,7 @@ public class catalog extends Activity implements View.OnClickListener {
 //        });
         // Instantiate a QueryFactory to define the ParseQuery to be used for fetching items in this
         // Adapter.
-        ParseQueryAdapter.QueryFactory<ParseObject> factory =
+        /*ParseQueryAdapter.QueryFactory<ParseObject> factory =
                 new ParseQueryAdapter.QueryFactory<ParseObject>() {
                     public ParseQuery create() {
                         ParseQuery query = new ParseQuery("post");
@@ -81,7 +81,7 @@ public class catalog extends Activity implements View.OnClickListener {
 
         // Pass the factory into the ParseQueryAdapter's constructor.
         ParseQueryAdapter<ParseObject> adapter = new ParseQueryAdapter<ParseObject>(this, factory);
-        adapter.setTextKey("name");
+        adapter.setTextKey("title");
 
         // Perhaps set a callback to be fired upon successful loading of a new set of ParseObjects.
         adapter.addOnQueryLoadListener(new ParseQueryAdapter.OnQueryLoadListener<ParseObject>() {
@@ -95,13 +95,14 @@ public class catalog extends Activity implements View.OnClickListener {
             }
 
             public void onLoaded(List<ParseObject> objects, ParseException e) {
+                System.out.println("LENGTH IS"+objects.size());
                 // Execute any post-loading logic, hide "loading" UI
             }
-        });
+        });*/
 
         // Attach it to your ListView, as in the example above
         ParseQueryAdapter adap = new ParseQueryAdapter(this, "post");
-        adapter.setTextKey("name");
+        adap.setTextKey("title");
         postlist.setAdapter(adap);
 
         Intent i = getIntent();
@@ -138,5 +139,9 @@ public class catalog extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         Intent post = new Intent(getApplicationContext(), PostPage.class);
         startActivity(post);
+    }
+
+    public void showdetails(ListView v) {
+        Intent info = new Intent(getApplicationContext(), PostDetails.class);
     }
 }

@@ -14,6 +14,8 @@ import com.parse.ParseUser;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 import static com.parse.ParseUser.getCurrentUser;
 
 
@@ -22,6 +24,7 @@ public class PostPage extends Activity implements View.OnClickListener {
     Button publishbutton;
     TextView title;
     TextView description;
+    ArrayList<String> arrayedus = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +61,38 @@ public class PostPage extends Activity implements View.OnClickListener {
         ParseObject post = new ParseObject("post");
         post.put("title", title.getText().toString());
         post.put("description", description.getText().toString());
-        post.put("author", getCurrentUser().getEmail().toString());
+        post.put("author", getCurrentUser().getEmail());
+        //Check to see if email already in database
+        if(isnotdatabase(verifyemail(getCurrentUser().getEmail())))    {
+            arrayedus.add(getCurrentUser().getEmail());
+        }
+
+        //arrayedus.add(verifyemail(getCurrentUser().getEmail()));
         post.saveInBackground();
 
         Intent catalog = new Intent(getApplicationContext(), catalog.class);
         startActivity(catalog);
+    }
+
+    public String verifyemail(String email) {
+        int ind = 0;
+        String edu;
+        for(int i =0; i<email.length();i++) {
+            if(email.substring(i,i+1).equals("@"))  {
+                ind = i;
+                break;
+            }
+        }
+        edu = email.substring(ind,email.length());
+        return edu;
+    }
+
+    public boolean isnotdatabase(String email)   {
+        for(int i = 0; i < arrayedus.size();i++)    {
+            if(arrayedus.get(i)==email) {
+                return false;
+            }
+        }
+        return true;
     }
 }

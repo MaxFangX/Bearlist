@@ -57,6 +57,7 @@
         android:id="@+id/postlist"
         android:layout_below="@+id/catalogpassword"
         android:layout_alignRight="@+id/postbutton"
-        android:layout_alignEnd="@+id/postbutton" />
+        android:layout_alignEnd="@+id/postbutton"
+        android:onClick="showdetails" />
 
 </RelativeLayout>
