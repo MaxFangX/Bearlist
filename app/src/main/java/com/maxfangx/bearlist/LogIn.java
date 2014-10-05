@@ -3,11 +3,13 @@ package com.maxfangx.bearlist;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
@@ -24,6 +26,7 @@ public class LogIn extends Activity implements View.OnClickListener {
     Button newuser;
     EditText email;
     EditText password;
+    TextView catalogname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class LogIn extends Activity implements View.OnClickListener {
         newuser.setOnClickListener(this);
         email = (EditText)findViewById(R.id.email);
         password = (EditText)findViewById(R.id.pass);
+        catalogname = (TextView)findViewById(R.id.catalogname);
 
 //        ParseUser currentUser = ParseUser.getCurrentUser();
 //        if (currentUser != null) {
@@ -70,26 +74,40 @@ public class LogIn extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        catalogname.setText("Button was pushed!");
+        System.out.print("BUTTON IS WORKING I THINK");
+        Log.d("some Button", "was pushed");
         switch (v.getId()) {
             case R.id.button:
+                System.out.print("LOGIN BUTTON WORKING");
+                Log.d("login", "button is working for login");
+//                ParseUser.logInInBackground("me","me", new LogInCallback() {
+//                    @Override
+//                    public void done(ParseUser parseUser, com.parse.ParseException e) {
+//                        Log.d("hello","hello");
+//                    }
+//                });
                 ParseUser.logInInBackground(email.getText().toString(), password.getText().toString(), new LogInCallback() {
-                    public void done(ParseUser user, ParseException e) {
+                    @Override
+                    public void done(ParseUser user, com.parse.ParseException e) {
+                        System.out.print("ARE WE EVEN GETTING HERE");
+                        Log.d("Inside", "ParseUserParseStuff");
                         if (user != null) {
                             // Hooray! The user is logged in.
+                            Log.d("User != null", "Is the user already in the database?");
+                            System.out.print("USER DID NOT EQUAL NULL");
                             Intent catalog = new Intent(getApplicationContext(), catalog.class);
                             catalog.putExtra("email", email.getText().toString());
+                            System.out.print("EMAIL PUT IN OK");
                             catalog.putExtra("pass", password.getText().toString());
+                            Log.d("put", "statements work");
                             startActivity(catalog);
+                            System.out.print("ACTIVITY STARTING");
                         }
                         else {
                             // Signup failed. Look at the ParseException to see what happened.
                             System.out.println("ERROR:"+e);
                         }
-                    }
-
-                    @Override
-                    public void done(ParseUser parseUser, com.parse.ParseException e) {
-
                     }
                 });
             break;

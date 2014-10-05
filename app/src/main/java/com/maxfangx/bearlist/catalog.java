@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
+
 
 import java.text.ParseException;
 import java.util.List;
@@ -28,7 +30,7 @@ public class catalog extends Activity implements View.OnClickListener {
     TextView catalogpass;
     Button postbutton;
     ListView postlist;
-    ParseQueryAdapter<ParseObject> mainAdapter;
+    //ParseQueryAdapter<ParseObject> mainAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +115,25 @@ public class catalog extends Activity implements View.OnClickListener {
         //catalogname.setText(name);
         catalogemail.setText(email);
         catalogpass.setText(pass);
+
+        postlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int position,
+                                    long id) {
+
+                Intent intent = new Intent(catalog.this, PostDetails.class);
+                intent.putExtra("title", (String) postlist.getItemAtPosition(position));
+                
+                startActivity(intent);
+            }
+        });
+
+//        postlist.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent intent = new Intent(catalog.this, PostDetails.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
 
@@ -140,8 +161,8 @@ public class catalog extends Activity implements View.OnClickListener {
         Intent post = new Intent(getApplicationContext(), PostPage.class);
         startActivity(post);
     }
-
-    public void showdetails(ListView v) {
-        Intent info = new Intent(getApplicationContext(), PostDetails.class);
-    }
+//
+//    public void showdetails(ListView v) {
+//        Intent info = new Intent(getApplicationContext(), PostDetails.class);
+//    }
 }

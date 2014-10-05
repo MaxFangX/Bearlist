@@ -60,15 +60,16 @@ public class SignUp extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         if (password.getText().toString().equals(passwordagain.getText().toString())) {
             ParseUser user = new ParseUser();
-            user.setUsername(name.getText().toString());
+            user.setUsername(email.getText().toString());
             user.setPassword(password.getText().toString());
             user.setEmail(email.getText().toString());
+            user.put("name", name.getText().toString());
 
 // other fields can be set just like with ParseObject
             //user.put("phone", "650-555-0000");
 
             user.signUpInBackground(new SignUpCallback() {
-                public void done(ParseException e) {
+                public void done(com.parse.ParseException e) {
                     if (e == null) {
                         // Hooray! Let them use the app now.
                         Intent catalog = new Intent(getApplicationContext(), catalog.class);
@@ -82,12 +83,12 @@ public class SignUp extends Activity implements View.OnClickListener {
                         // to figure out what went wrong
                     }
                 }
-
-                @Override
-                public void done(com.parse.ParseException e) {
-
-                }
             });
+//            Intent catalog = new Intent(getApplicationContext(), catalog.class);
+//            catalog.putExtra("name", name.getText().toString());
+//            catalog.putExtra("email", email.getText().toString());
+//            catalog.putExtra("pass", password.getText().toString());
+//            startActivity(catalog);
         }
         else    {
             Toast.makeText(this, "Sorry, your password doesn't match.", Toast.LENGTH_SHORT).show();

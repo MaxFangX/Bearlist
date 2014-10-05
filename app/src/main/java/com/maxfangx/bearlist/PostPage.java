@@ -63,9 +63,9 @@ public class PostPage extends Activity implements View.OnClickListener {
         post.put("description", description.getText().toString());
         post.put("author", getCurrentUser().getEmail());
         //Check to see if email already in database
-        if(isnotdatabase(verifyemail(getCurrentUser().getEmail())))    {
-            arrayedus.add(getCurrentUser().getEmail());
-        }
+//        if(isnotdatabase(verifyemail(getCurrentUser().getEmail())))    {
+//            arrayedus.add(getCurrentUser().getEmail());
+//        }
 
         //arrayedus.add(verifyemail(getCurrentUser().getEmail()));
         post.saveInBackground();

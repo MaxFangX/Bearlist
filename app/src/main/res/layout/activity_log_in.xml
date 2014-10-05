@@ -10,9 +10,10 @@
 
     <TextView
         android:text="@string/welcome"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/catalogname" />
+        android:id="@+id/catalogname"
+        android:textSize="22dp" />
 
     <!--<EditText-->
         <!--android:layout_width="wrap_content"-->
@@ -26,7 +27,7 @@
         <!--android:hint="Name" />-->
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
@@ -37,7 +38,7 @@
         android:layout_alignStart="@+id/pass" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
@@ -63,6 +64,7 @@
         android:id="@+id/signup"
         android:onClick="onClick"
         android:layout_below="@+id/button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textStyle="normal" />
 
 </RelativeLayout>

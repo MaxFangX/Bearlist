@@ -62,8 +62,8 @@
         android:layout_height="wrap_content"
         android:text="Sign Up"
         android:id="@+id/button"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onClick"/>
+        android:onClick="onClick"
+        android:layout_below="@+id/passagain"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
